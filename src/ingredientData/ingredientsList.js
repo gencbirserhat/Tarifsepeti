@@ -17,3 +17,4 @@ export const ingredientsList = [
   'Börek', 'Su böreği', 'Gözleme', 'Katmer', 'Muhlama', 'Kaşarlı pide', 'Kıymalı pide', 'Tavuk şiş', 'Çöp şiş', 'Kuzu şiş', 'Ciğer',
   'Kokoreç', 'Uykuluk', 'Arnavut ciğeri', 'İşkembe', 'Paça', 'Tarhana',
 ];
+

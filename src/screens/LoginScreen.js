@@ -55,11 +55,33 @@ export default function LoginScreen() {
         index: 0,
         routes: [{ name: "App" }],
       });
-      console.log("User signed in and data stored:", user);
+      console.log("giriş yapıldı:",user.email)
+      //console.log("User signed in and data stored:", user);
     } catch (error) {
-      alert(error.message);
-    }
-  };
+      console.log(error)
+      let errorMessage = "Bir hata oluştu. Lütfen tekrar deneyin.";
+    
+    switch (error.code) {
+      case "auth/user-not-found":
+        errorMessage = "Belirtilen e-posta adresine sahip bir hesap bulunamadı.";
+        break;
+      case "auth/invalid-credential":
+        errorMessage = "Epostayı veya şifreyi yanlış girdiniz. Lütfen tekrar deneyin";
+        break;
+      case "auth/invalid-email":
+        errorMessage = "Geçerli bir eposta girip tekrar deneyin.";
+        break;
+      case "auth/missing-password":
+        errorMessage = "Lütfen şifrenizi de girip tekrar deneyiniz.";
+        break;
+      case "auth/too-many-requests":
+        errorMessage = "Çok fazla giriş denemesi. Lütfen daha sonra tekrar deneyiniz.";
+        break;
+      default:
+        errorMessage = error.message; 
+  }
+  Alert.alert("Hata:",errorMessage);
+}};
 
   return (
     <KeyboardAvoidingView style={LoginStyles.container} behavior="padding">

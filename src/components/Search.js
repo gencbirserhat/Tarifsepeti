@@ -19,6 +19,7 @@ export default function Search({
 }) {
   const [showOptions, setShowOptions] = useState(false);
   const [filteredIngredients, setFilteredIngredients] = useState(ingredientsList);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
@@ -31,6 +32,7 @@ export default function Search({
     } else {
       setSelectedOptions([...selectedOptions, option]);
     }
+    setTextFilter('');
   };
 
   const renderOptionItem = (item, index) => (
@@ -41,6 +43,7 @@ export default function Search({
     >
       <Checkbox
         status={selectedOptions.includes(item) ? "checked" : "unchecked"}
+        onPress={() => toggleOption(item)}
         color="white"
       />
       <Text style={styles.searchContainerText}>{item}</Text>
@@ -121,6 +124,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#EE4F35",
     paddingTop: 10,
+  },
+  searchContainerText: {
+    color: "white",
   },
   searchContainer: {
     flexDirection: "row",

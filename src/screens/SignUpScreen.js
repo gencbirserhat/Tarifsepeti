@@ -70,7 +70,33 @@ export default function SignUpScreen() {
         );
         navigation.navigate("Login");
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        console.log("Error code:", error.code);
+        console.log("Error message:", error.message);
+        
+        let errorMessage = "Bir hata oluştu. Lütfen tekrar deneyin.";
+  
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            errorMessage = "Bu e-posta adresi zaten kullanılıyor. Lütfen başka bir e-posta deneyin.";
+            break;
+          case "auth/invalid-email":
+            errorMessage = "Geçerli bir e-posta adresi girin.";
+            break;
+          case "auth/operation-not-allowed":
+            errorMessage = "E-posta ile kayıt olma şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.";
+            break;
+          case "auth/weak-password":
+            errorMessage = "Şifreniz çok zayıf. Lütfen daha güçlü bir şifre seçin.";
+            break;
+          case "auth/missing-password":
+            errorMessage = "Bir şifre oluşturunuz."
+            break;
+          default:
+            errorMessage = error.message; 
+        }
+        Alert.alert("Hata:", errorMessage);
+      });
   };
 
   return (
