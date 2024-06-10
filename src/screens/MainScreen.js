@@ -1,13 +1,11 @@
 import {
   StyleSheet,
-  Text,
   View,
-  TouchableOpacity,
   Animated,
   BackHandler,
   Alert,
 } from "react-native";
-import React, { useState, useLayoutEffect, useRef, useEffect } from "react";
+import React, { useState, useLayoutEffect, useRef} from "react";
 import Search from "../components/Search";
 import Posts from "../components/Posts";
 import {

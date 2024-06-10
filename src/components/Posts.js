@@ -1,15 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState} from "react";
 import {
   View,
   Text,
-  FlatList,
   Image,
   TouchableOpacity,
   StyleSheet,
   RefreshControl,
   ScrollView,
 } from "react-native";
-import { firebase, auth } from "../../firebase";
+import { firebase} from "../../firebase";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Posts({ filters, textFilter }) {

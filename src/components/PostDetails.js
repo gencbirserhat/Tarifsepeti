@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  ScrollView,
-  BackHandler,
-} from "react-native";
-import { firebase, auth } from "../../firebase";
-import { useNavigation } from "@react-navigation/native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { firebase } from "../../firebase";
 
 export default function PostDetails({ route }) {
-  const { item, ingredients } = route.params;
+  const { item } = route.params;
   const [image, setImage] = useState(null);
-  const navigation = useNavigation();
   const [username, setUsername] = useState("");
 
   useEffect(() => {
